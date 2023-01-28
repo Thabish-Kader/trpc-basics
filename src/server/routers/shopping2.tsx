@@ -13,15 +13,4 @@ export const shopping2Router = router({
 				test: `test5 ${input.text}`,
 			};
 		}),
-	test2: procedure
-		.input(
-			z.object({
-				text: z.string(),
-			})
-		)
-		.query(({ input: { text }, ctx }) => {
-			return {
-				test2: `This is test ${text}`,
-			};
-		}),
 });

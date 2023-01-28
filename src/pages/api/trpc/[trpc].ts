@@ -6,6 +6,5 @@ import { createContextInner } from "@/server/trpc";
 // @see https://trpc.io/docs/api-handler
 export default trpcNext.createNextApiHandler({
 	router: appRouter,
-
 	createContext: createContextInner,
 });
