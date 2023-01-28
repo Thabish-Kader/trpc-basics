@@ -3,6 +3,7 @@ import { procedure, router } from "../trpc";
 import { prisma } from "../../../prisma/db";
 
 export const todoRouter = router({
+	// add todo
 	addTodo: procedure
 		.input(
 			z.object({
@@ -13,7 +14,7 @@ export const todoRouter = router({
 			})
 		)
 		.mutation(async ({ input, ctx }) => {
-			const data = await prisma.todo.create({
+			const data = await ctx.prisma.todo.create({
 				data: {
 					name: input.name,
 					priority: input.priority,
@@ -21,16 +22,32 @@ export const todoRouter = router({
 			});
 			return data;
 		}),
+	// get all todos
 	getTodos: procedure.query(async ({ input, ctx }) => {
-		const data = await prisma.todo.findMany({});
+		const data = await ctx.prisma.todo.findMany({});
 		return data;
 	}),
+	// get single todo
+	getTodo: procedure
+		.input(
+			z.object({
+				id: z.number(),
+			})
+		)
+		.query(async ({ input, ctx }) => {
+			const data = await ctx.prisma.todo.findUnique({
+				where: {
+					id: input.id,
+				},
+			});
+			return data;
+		}),
+	// update todo
 	updateTodo: procedure
 		.input(
 			z.object({
 				id: z.number(),
 				name: z.string(),
-				priority: z.string(),
 			})
 		)
 		.mutation(async ({ input, ctx }) => {
@@ -40,7 +57,6 @@ export const todoRouter = router({
 				},
 				data: {
 					name: input.name,
-					priority: input.priority,
 				},
 			});
 		}),
