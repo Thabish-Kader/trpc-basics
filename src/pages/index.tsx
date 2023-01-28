@@ -3,8 +3,8 @@ import { Inter } from "@next/font/google";
 import { trpc } from "../utils/trpc";
 
 export default function Home() {
-	const { data } = trpc.hello.useQuery({ text: "client" });
-	console.log(data);
+	const test = trpc.shopping.test.useQuery({ text: "is it working" });
+	const test5 = trpc.shopping2.test5.useQuery({ text: "which test" });
 	return (
 		<>
 			<Head>
@@ -19,7 +19,7 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<h1>Hello world</h1>
+			<h1>{test5.data?.test}</h1>
 		</>
 	);
 }
