@@ -1,10 +1,10 @@
 import { z } from "zod";
 import { procedure, router } from "./trpc";
-import { contactRouter } from "./routers/contacts";
+import { todoRouter } from "./routers/todo";
 import { shopping2Router } from "./routers/shopping2";
 
 export const appRouter = router({
-	contact: contactRouter,
+	todo: todoRouter,
 	shopping2: shopping2Router,
 });
 

@@ -8,14 +8,15 @@ type TodoData = {
 	priority: string;
 };
 export const AddTodo = () => {
+	const utils = trpc.useContext();
 	const queryClient = useQueryClient();
 	const [formData, setFormData] = useState<TodoData>({
 		name: "",
 		priority: "",
 	});
-	const addTodo = trpc.contact.addTodo.useMutation({
-		onSuccess(data, variables, context) {
-			queryClient.invalidateQueries("getTodos");
+	const addTodo = trpc.todo.addTodo.useMutation({
+		onSuccess() {
+			utils.todo.getTodos.invalidate();
 		},
 	});
 

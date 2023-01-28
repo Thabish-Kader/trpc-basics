@@ -2,7 +2,7 @@ import { z } from "zod";
 import { procedure, router } from "../trpc";
 import { prisma } from "../../../prisma/db";
 
-export const contactRouter = router({
+export const todoRouter = router({
 	addTodo: procedure
 		.input(
 			z.object({
@@ -25,4 +25,23 @@ export const contactRouter = router({
 		const data = await prisma.todo.findMany({});
 		return data;
 	}),
+	updateTodo: procedure
+		.input(
+			z.object({
+				id: z.number(),
+				name: z.string(),
+				priority: z.string(),
+			})
+		)
+		.mutation(async ({ input, ctx }) => {
+			return await ctx.prisma.todo.update({
+				where: {
+					id: input.id,
+				},
+				data: {
+					name: input.name,
+					priority: input.priority,
+				},
+			});
+		}),
 });
