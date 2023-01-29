@@ -8,8 +8,11 @@ export default function Home() {
 			<Head>
 				<title>trpc</title>
 			</Head>
-			<AddTodo />
-			<Todos />
+			<div className="main">
+				<h1>My Todos</h1>
+				<AddTodo />
+				<Todos />
+			</div>
 		</>
 	);
 }

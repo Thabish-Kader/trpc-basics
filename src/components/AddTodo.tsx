@@ -38,7 +38,7 @@ export const AddTodo = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form className="inputs" onSubmit={handleSubmit}>
 			<input
 				type="text"
 				value={formData.name}

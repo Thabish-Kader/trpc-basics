@@ -16,17 +16,23 @@ export const Todos = () => {
 		<div>
 			<div className="todo-card">
 				{todos.data?.map((todo) => (
-					<div key={todo.id}>
+					<div key={todo.id} className="single-todo">
 						<h1>Task : {todo.name}</h1>
 						<h1>Priority : {todo.priority}</h1>
-						<button onClick={() => router.push(`/todo/${todo.id}`)}>
-							View
-						</button>
-						<button
-							onClick={() => deleteTodo.mutate({ id: todo.id })}
-						>
-							Delete
-						</button>
+						<div className="todo-btns">
+							<button
+								onClick={() => router.push(`/todo/${todo.id}`)}
+							>
+								View
+							</button>
+							<button
+								onClick={() =>
+									deleteTodo.mutate({ id: todo.id })
+								}
+							>
+								Delete
+							</button>
+						</div>
 					</div>
 				))}
 			</div>
