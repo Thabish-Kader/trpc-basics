@@ -39,12 +39,12 @@ const TodoPage = () => {
 	};
 
 	return (
-		<div>
+		<div className="main">
 			<div>
-				<h1>{todo.data?.name}</h1>
-				<h2>{todo.data?.priority}</h2>
+				<h1>Task name : {todo.data?.name}</h1>
+				<h2>Priority : {todo.data?.priority}</h2>
 			</div>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} className="inputs">
 				<input
 					type="text"
 					placeholder="Enter new Todo"
