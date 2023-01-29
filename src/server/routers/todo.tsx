@@ -48,6 +48,7 @@ export const todoRouter = router({
 			z.object({
 				id: z.number(),
 				name: z.string(),
+				priority: z.string(),
 			})
 		)
 		.mutation(async ({ input, ctx }) => {
@@ -57,7 +58,9 @@ export const todoRouter = router({
 				},
 				data: {
 					name: input.name,
+					priority: input.priority,
 				},
 			});
 		}),
+	// delete Todo
 });

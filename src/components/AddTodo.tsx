@@ -1,7 +1,8 @@
 import { trpc } from "@/utils/trpc";
+import { Todo } from "@prisma/client";
 import { useQueryClient } from "@tanstack/react-query";
 
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 type TodoData = {
 	name: string;
@@ -10,7 +11,8 @@ type TodoData = {
 export const AddTodo = () => {
 	const utils = trpc.useContext();
 	const queryClient = useQueryClient();
-	const [formData, setFormData] = useState<TodoData>({
+	const [formData, setFormData] = useState<Todo>({
+		id: 0,
 		name: "",
 		priority: "",
 	});
@@ -20,8 +22,23 @@ export const AddTodo = () => {
 		},
 	});
 
+	const handleSubmit = (e: FormEvent) => {
+		e.preventDefault();
+		if (formData.name === "" || formData.priority === "")
+			return alert("No Empty fields");
+		addTodo.mutate({
+			name: formData.name,
+			priority: formData.priority,
+		});
+		setFormData({
+			id: 0,
+			name: "",
+			priority: "",
+		});
+	};
+
 	return (
-		<div>
+		<form onSubmit={handleSubmit}>
 			<input
 				type="text"
 				value={formData.name}
@@ -40,16 +57,7 @@ export const AddTodo = () => {
 				className=""
 				placeholder="Priority.."
 			/>
-			<button
-				onClick={() =>
-					addTodo.mutate({
-						name: formData.name,
-						priority: formData.priority,
-					})
-				}
-			>
-				Add
-			</button>
-		</div>
+			<button type="submit">Add</button>
+		</form>
 	);
 };
