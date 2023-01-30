@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { procedure, router } from "../trpc";
-import { prisma } from "../../../prisma/db";
 
 export const todoRouter = router({
 	// add todo
