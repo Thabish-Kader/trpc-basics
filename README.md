@@ -8,6 +8,9 @@
 
 <img align="left" alt="trpc" width="30px" style="padding-right:10px;" src="https://res.cloudinary.com/apideck/image/upload/v1616206509/icons/trpc-io.png" />
 
+<br/>
+<br/>
+
 ### Resources
 
 -   [Trpc congig with next js](https://trpc.io/docs/nextjs)
