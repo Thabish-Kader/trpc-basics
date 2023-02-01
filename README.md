@@ -11,6 +11,10 @@
 <br/>
 <br/>
 
+## Youtube Video
+
+[![Building Typesafe APIs with TRPC, Next.js and Prisma | Complete Walkthrough](https://ytcards.demolab.com/?id=TAkLj9q7SUM&title=Building+Typesafe+APIs+with+TRPC%2C+Next.js+and+Prisma+%7C+Complete+Walkthrough&lang=en&timestamp=1675222235&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=250 "Building Typesafe APIs with TRPC, Next.js and Prisma | Complete Walkthrough")](https://www.youtube.com/watch?v=TAkLj9q7SUM)
+
 ### Resources
 
 -   [Trpc congig with next js](https://trpc.io/docs/nextjs)
